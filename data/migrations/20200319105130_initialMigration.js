@@ -23,7 +23,7 @@ exports.up = function (knex) {
     })
     .createTable('zoo_animals', tbl => {
       // composite pk or artificial pk ?
-      tbl.increments()
+      tbl.increments() // COMMENT OUT IF YOU USE COMPOSITE PK
       tbl.integer('animal_id')
         .unsigned()
         .notNullable()
@@ -38,6 +38,8 @@ exports.up = function (knex) {
         .inTable('zoos')
         .onDelete('RESTRICT')
         .onUpdate('RESTRICT')
+      // MAKING A COMPOSITE PRIMARY KEY
+      // tbl.primary(['zoo_id', 'animal_id']) // COMMENT OUT increments() IF YOU USE THIS
     })
 };
 
