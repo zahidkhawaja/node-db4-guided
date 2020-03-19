@@ -18,8 +18,8 @@ exports.up = function (knex) {
         .notNullable()
         .references('id')
         .inTable('species')
-        .onDelete('RESTRICT')
-        .onUpdate('RESTRICT')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE')
     })
     .createTable('zoo_animals', tbl => {
       // composite pk or artificial pk ?
@@ -29,15 +29,15 @@ exports.up = function (knex) {
         .notNullable()
         .references('id')
         .inTable('animals')
-        .onDelete('RESTRICT')
-        .onUpdate('RESTRICT')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE')
       tbl.integer('zoo_id')
         .unsigned()
         .notNullable()
         .references('id')
         .inTable('zoos')
-        .onDelete('RESTRICT')
-        .onUpdate('RESTRICT')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE')
       // MAKING A COMPOSITE PRIMARY KEY
       // tbl.primary(['zoo_id', 'animal_id']) // COMMENT OUT increments() IF YOU USE THIS
     })
