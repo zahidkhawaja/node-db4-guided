@@ -18,6 +18,8 @@ exports.up = function(knex) {
         .notNullable()
         .references('id')
         .inTable('species')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
     })
     .createTable()
 };
